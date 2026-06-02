@@ -1,15 +1,9 @@
 package com.example.avaliacaopdm
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,17 +11,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.LinearProgressIndicator
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
-import androidx.compose.runtime.rememberCoroutineScope
-
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
 
 
 @Composable
@@ -37,66 +31,65 @@ fun TelaLogin(navController: NavController){
         mutableStateOf("")
     }
 
-    var senha by remember {
-        mutableStateOf("")
-    }
-
     var aceito by remember {
+        mutableStateOf(true)
+    }
+
+    var ativo by remember {
         mutableStateOf(false)
     }
 
-    var carregando by remember {
-        mutableStateOf(false)
-    }
-
-    val scope = rememberCoroutineScope()
-
-    Column(modifier = Modifier.fillMaxSize()
-        .padding(50.dp),
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
+
+        Greeting("ola")
+
         Imagem(
             idImagem = R.drawable.bob,
-            modifier = Modifier.size(300.dp)
+            modifier = Modifier.size(150.dp).clip(CircleShape)
         )
 
-        Titulo("Seja bem vindo!!!")
+        Titulo("Nome de Teste")
 
-        EntradaTexto("Nome",
-            "digite seu nome",
+        EntradaTexto("Digite seu nome",
+            "nome",
             texto = nome,
             onTextoChange = { nome = it }
         )
 
-        EntradaTexto("Senha",
-            "Digite sua senha",
-            texto = senha,
-            onTextoChange = {senha = it}
+        CheckBox(
+            "Li e aceito as regras",
+            aceito = aceito,
+            onAceitoChange = { aceito = it }
         )
 
-            CheckBox(
-                "salvar login",
-                aceito = aceito,
-                onAceitoChange = { aceito = it }
-            )
+        if(nome != "" && aceito == true){
+            ativo = true
+        }else{
+            ativo = false
+        }
 
-            if (carregando) {
-                LinearProgressIndicator()
-            }
-
-        BotaoGenerico("Entrar",
+        BotaoEnable("Concluir Cadastro",
+            ativo,
             onClick = {
 
-            if(nome == "ismael" && senha == "123" && aceito) {
-                println("Login correto")
-                navController.navigate("formulario")
-            }
-            else {
-                println("Login incorreto")
-            }
             }
         )
     }
 }
 
+@Composable
+private fun Greeting(name: String) {
+    Column(
+        modifier = Modifier
+            .padding()
+            .fillMaxWidth()
+            .background(color = Color.Cyan)
+            .size(70.dp)
+    ) {
+        Text(text = "")
+        Titulo("CadastroAPP")
+    }
+}

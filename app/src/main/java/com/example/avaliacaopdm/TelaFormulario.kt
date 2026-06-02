@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Row
 
+
 @Composable
 fun TelaFormulario(navController: NavController){
 
@@ -49,7 +50,7 @@ fun TelaFormulario(navController: NavController){
     }
 
     Column (modifier = Modifier.fillMaxSize()
-        .padding(50.dp),
+        .padding(30.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)){
 

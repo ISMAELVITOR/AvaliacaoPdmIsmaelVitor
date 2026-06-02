@@ -15,12 +15,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import android.widget.NumberPicker
+import androidx.compose.foundation.background
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 
 @Composable
@@ -28,7 +34,8 @@ fun Titulo(texto: String){
     Text(
         text = texto,
         fontSize = 20.sp,
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+
     )
 }
 
@@ -75,6 +82,21 @@ fun BotaoGenerico(
 ) {
     Button(
         onClick = onClick
+    ) {
+        Text(texto)
+    }
+}
+
+@Composable
+fun BotaoEnable(
+    texto: String,
+    ativo: Boolean,
+    onClick: () -> Unit
+) {
+    Button(
+        enabled = ativo,
+        onClick = onClick
+
     ) {
         Text(texto)
     }
