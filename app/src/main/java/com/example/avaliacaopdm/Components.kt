@@ -14,8 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.text.font.FontFamily
-import com.example.avaliacaopdm.ui.theme.PixelifySans
+import android.widget.NumberPicker
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.foundation.layout.Column
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 
 @Composable
@@ -96,5 +101,59 @@ fun CheckBox(texto: String, aceito: Boolean, onAceitoChange: (Boolean) -> Unit) 
             onCheckedChange = { onAceitoChange(it) }
         )
         Text(text = texto)
+    }
+}
+
+@Composable
+fun DatePickerRodinha(
+    dia: Int,
+    mes: Int,
+    ano: Int,
+    onDiaChange: (Int) -> Unit,
+    onMesChange: (Int) -> Unit,
+    onAnoChange: (Int) -> Unit
+) {
+    Row {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Dia")
+            AndroidView(factory = { context ->
+                NumberPicker(context).apply {
+                    minValue = 1
+                    maxValue = 31
+                    value = dia
+                    setOnValueChangedListener { _, _, novoValor ->
+                        onDiaChange(novoValor)
+                    }
+                }
+            })
+        }
+
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Mês")
+            AndroidView(factory = { context ->
+                NumberPicker(context).apply {
+                    minValue = 1
+                    maxValue = 12
+                    value = mes
+                    setOnValueChangedListener { _, _, novoValor ->
+                        onMesChange(novoValor)
+                    }
+                }
+            })
+        }
+
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Ano")
+            AndroidView(factory = { context ->
+                NumberPicker(context).apply {
+                    minValue = 2020
+                    maxValue = 2035
+                    value = ano
+                    setOnValueChangedListener { _, _, novoValor ->
+                        onAnoChange(novoValor)
+                    }
+                }
+            })
+        }
     }
 }

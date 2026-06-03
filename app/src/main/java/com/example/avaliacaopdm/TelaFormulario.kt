@@ -31,12 +31,21 @@ fun TelaFormulario(navController: NavController){
         mutableStateOf("")
     }
 
-    var dataNasciemento by remember {
-        mutableStateOf("")
-    }
-
     var aceito by remember {
         mutableStateOf(false)
+    }
+
+    var dia by remember {
+        mutableStateOf(1)
+    }
+
+
+    var mes by remember {
+        mutableStateOf(1)
+    }
+
+    var ano by remember {
+        mutableStateOf(2026)
     }
 
     Column (modifier = Modifier.fillMaxSize()
@@ -46,7 +55,7 @@ fun TelaFormulario(navController: NavController){
 
         Imagem(idImagem = R.drawable.interrogacao, Modifier.size(150.dp))
 
-        Titulo("Faça seu cadastro para receber um presente")
+        Titulo("Faça seu cadastro para receber uma imagem de presente")
 
         EntradaTexto("nome",
             "Digite seu nome",
@@ -59,6 +68,15 @@ fun TelaFormulario(navController: NavController){
         EntradaTexto("endereço",
             "Digite seu endereço",
             texto = endereco, onTextoChange = {endereco = it})
+
+        DatePickerRodinha(
+            dia = dia,
+            mes = mes,
+            ano = ano,
+            onDiaChange = { dia = it },
+            onMesChange = { mes = it },
+            onAnoChange = { ano = it }
+        )
 
         CheckBox(
             "Aceito os termos para receber o presente",
@@ -78,7 +96,7 @@ fun TelaFormulario(navController: NavController){
 
             BotaoGenerico("Salvar",
                 onClick = {
-                    if(nome != "" && cidade != "" && endereco != ""){
+                    if(nome != "" && cidade != "" && endereco != "" && dia != 0 && mes != 0 && ano != 0 && aceito == true){
                         navController.navigate("telaPresente")
                 }
                 })
