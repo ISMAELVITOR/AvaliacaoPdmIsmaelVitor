@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
             AvaliacaoPDMTheme {
                 val navController = rememberNavController()
 
-                NavHost(navController, startDestination = "formulario",
+                NavHost(navController, startDestination = "login",
                 ) {
 
                     composable("formulario") {

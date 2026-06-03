@@ -28,43 +28,24 @@ fun SegundaTela(navController: NavController){
     ) {
 
         Row() {
-            BotaoVoltar(navController)
-            BotaoAvancar(navController)
+
+            BotaoGenerico("voltar",
+                onClick = {
+                navController.navigate("login")
+            }
+            )
+            BotaoGenerico("Avançar",
+                onClick = {
+                    navController.navigate("login")
+                }
+            )
         }
 
         DatePickerExemplo()
 
-        BotaoImagem(navController, modifier = Modifier.size(200   .dp))
+        BotaoImagem(idImagem = R.drawable.voltar, "botão voltar",navController, modifier = Modifier.size(200   .dp))
     }
 
-}
-
-@Composable
-fun BotaoVoltar(navController: NavController) {
-
-    Button(
-        onClick = {
-                navController.navigate("login")
-        }
-    ) {
-        Text(
-            text = "Voltar"
-        )
-    }
-}
-
-@Composable
-fun BotaoAvancar(navController: NavController) {
-
-    Button(
-        onClick = {
-            navController.navigate("login")
-        }
-    ) {
-        Text(
-            text = "Avancar"
-        )
-    }
 }
 
 @Composable
@@ -72,19 +53,4 @@ fun DatePickerExemplo() {
     val datePickerState = rememberDatePickerState()
 
     DatePicker(state = datePickerState)
-}
-
-@Composable
-fun BotaoImagem(navController: NavController, modifier: Modifier = Modifier) {
-    IconButton(
-        onClick = {
-        navController.navigate("login")
-        },
-        modifier = modifier
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.voltar),
-            contentDescription = "Botão com imagem",
-        )
-    }
 }

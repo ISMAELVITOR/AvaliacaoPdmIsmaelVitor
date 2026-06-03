@@ -85,8 +85,18 @@ fun TelaLogin(navController: NavController){
                 LinearProgressIndicator()
             }
 
-        BotaoEntrar(nome, senha,aceito, navController)
+        BotaoGenerico("Entrar",
+            onClick = {
 
+            if(nome == "ismael" && senha == "123" && aceito) {
+                println("Login correto")
+                navController.navigate("segundaTela")
+            }
+            else {
+                println("Login incorreto")
+            }
+            }
+        )
     }
 }
 

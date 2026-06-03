@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -62,23 +63,28 @@ fun Imagem(idImagem: Int, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BotaoEntrar(nome: String, senha: String,aceito: Boolean, navController: NavController) {
-
+fun BotaoGenerico(
+    texto: String,
+    onClick: () -> Unit
+) {
     Button(
-        onClick = {
-
-            if(nome == "ismael" && senha == "123" && aceito) {
-                println("Login correto")
-                navController.navigate("segundaTela")
-            }
-            else {
-                println("Login incorreto")
-            }
-
-        }
+        onClick = onClick
     ) {
-        Text(
-            text = "Entrar"
+        Text(texto)
+    }
+}
+
+@Composable
+fun BotaoImagem(idImagem: Int, descricao:String, navController: NavController, modifier: Modifier = Modifier) {
+    IconButton(
+        onClick = {
+            navController.navigate("login")
+        },
+        modifier = modifier
+    ) {
+        Image(
+            painter = painterResource(id = idImagem),
+            contentDescription = descricao,
         )
     }
 }
