@@ -1,5 +1,6 @@
 package com.example.avaliacaopdm
 
+import android.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
@@ -16,9 +17,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun Titulo(){
+fun Titulo(texto: String){
     Text(
-        text = "Seja Bem Vindo!!!",
+        text = texto,
         fontSize = 30.sp,
         textAlign = TextAlign.Center,
     )
@@ -52,7 +53,7 @@ fun EntradaTexto(campo: String,
 }
 
 @Composable
-fun ImagemLogin(idImagem: Int, modifier: Modifier = Modifier) {
+fun Imagem(idImagem: Int, modifier: Modifier = Modifier) {
     Image(
         painter = painterResource(id = idImagem),
         contentDescription = null,
@@ -83,43 +84,12 @@ fun BotaoEntrar(nome: String, senha: String,aceito: Boolean, navController: NavC
 }
 
 @Composable
-fun BotaoEntrar2(
-    nome: String,
-    senha: String,
-    aceito: Boolean,
-    carregando: Boolean,
-    navController: NavController,
-    scope: kotlinx.coroutines.CoroutineScope,
-    onCarregandoChange: (Boolean) -> Unit
-) {
-    Button(
-        onClick = {
-            if (nome == "ismael" && senha == "123" && aceito) {
-                onCarregandoChange(true)
-
-                scope.launch {
-                    delay(1000)
-                    navController.navigate("segundaTela")
-                }
-            } else {
-                println("Login incorreto")
-            }
-        },
-        enabled = !carregando
-    ) {
-        Text(
-            text = if (carregando) "Entrando..." else "Entrar"
-        )
-    }
-}
-
-@Composable
-fun CheckBoxAceitar(aceito: Boolean, onAceitoChange: (Boolean) -> Unit) {
+fun CheckBoxAceitar(texto: String, aceito: Boolean, onAceitoChange: (Boolean) -> Unit) {
     Row {
         Checkbox(
             checked = aceito,
             onCheckedChange = { onAceitoChange(it) }
         )
-        Text(text = "Aceito os termos")
+        Text(text = texto)
     }
 }

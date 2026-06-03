@@ -56,12 +56,12 @@ fun TelaLogin(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        ImagemLogin(
+        Imagem(
             idImagem = R.drawable.bob,
             modifier = Modifier.size(300.dp)
         )
 
-        Titulo()
+        Titulo("Seja bem vindo!!!")
 
         EntradaTexto("Nome",
             "digite seu nome",
@@ -76,16 +76,13 @@ fun TelaLogin(navController: NavController){
         )
 
             CheckBoxAceitar(
+                "salvar login",
                 aceito = aceito,
                 onAceitoChange = { aceito = it }
             )
 
             if (carregando) {
                 LinearProgressIndicator()
-            }
-
-            BotaoEntrar2(nome, senha, aceito, carregando, navController, scope) { novoValor ->
-                carregando = novoValor
             }
 
         BotaoEntrar(nome, senha,aceito, navController)

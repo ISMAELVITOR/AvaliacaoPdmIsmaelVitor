@@ -21,6 +21,10 @@ fun TelaFormulario(navController: NavController){
         mutableStateOf("")
     }
 
+    var cidade by remember {
+        mutableStateOf("")
+    }
+
     var endereco by remember {
         mutableStateOf("")
     }
@@ -38,9 +42,23 @@ fun TelaFormulario(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)){
 
-        EntradaTexto("nome","digite seu nome", texto = nome, onTextoChange = {nome = it})
-        EntradaTexto("endereço","digite seu endereço", texto = endereco, onTextoChange = {endereco = it})
+        EntradaTexto("nome",
+            "Digite seu nome",
+            texto = nome, onTextoChange = {nome = it})
 
+        EntradaTexto("cidade",
+            "Digite sua Cidade",
+            texto = nome, onTextoChange = {cidade = it})
+
+        EntradaTexto("endereço",
+            "Digite seu endereço",
+            texto = endereco, onTextoChange = {endereco = it})
+
+        CheckBoxAceitar(
+            "Aceito os termos de uso",
+            aceito = aceito,
+            onAceitoChange = { aceito = it }
+        )
     }
 
 }
