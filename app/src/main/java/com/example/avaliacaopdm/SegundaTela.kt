@@ -43,7 +43,10 @@ fun SegundaTela(navController: NavController){
 
         DatePickerExemplo()
 
-        BotaoImagem(idImagem = R.drawable.voltar, "botão voltar",navController, modifier = Modifier.size(200   .dp))
+        BotaoImagem(idImagem = R.drawable.volta, "botão voltar",
+            {navController.navigate("login")},
+            modifier = Modifier.size(200.dp)
+        )
     }
 
 }

@@ -9,6 +9,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -75,11 +76,9 @@ fun BotaoGenerico(
 }
 
 @Composable
-fun BotaoImagem(idImagem: Int, descricao:String, navController: NavController, modifier: Modifier = Modifier) {
+fun BotaoImagem(idImagem: Int, descricao:String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     IconButton(
-        onClick = {
-            navController.navigate("login")
-        },
+        onClick = onClick,
         modifier = modifier
     ) {
         Image(
@@ -91,7 +90,7 @@ fun BotaoImagem(idImagem: Int, descricao:String, navController: NavController, m
 
 @Composable
 fun CheckBox(texto: String, aceito: Boolean, onAceitoChange: (Boolean) -> Unit) {
-    Row {
+    Row(verticalAlignment = Alignment.CenterVertically) {
         Checkbox(
             checked = aceito,
             onCheckedChange = { onAceitoChange(it) }

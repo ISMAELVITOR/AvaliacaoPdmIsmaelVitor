@@ -42,6 +42,10 @@ fun TelaFormulario(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)){
 
+        BotaoImagem(idImagem = R.drawable.bob,
+            "perfil",
+            navController = navController)
+
         EntradaTexto("nome",
             "Digite seu nome",
             texto = nome, onTextoChange = {nome = it})
