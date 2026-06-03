@@ -54,7 +54,7 @@ fun TelaFormulario(navController: NavController){
             "Digite seu endereço",
             texto = endereco, onTextoChange = {endereco = it})
 
-        CheckBoxAceitar(
+        CheckBox(
             "Aceito os termos de uso",
             aceito = aceito,
             onAceitoChange = { aceito = it }

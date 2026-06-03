@@ -84,7 +84,7 @@ fun BotaoEntrar(nome: String, senha: String,aceito: Boolean, navController: NavC
 }
 
 @Composable
-fun CheckBoxAceitar(texto: String, aceito: Boolean, onAceitoChange: (Boolean) -> Unit) {
+fun CheckBox(texto: String, aceito: Boolean, onAceitoChange: (Boolean) -> Unit) {
     Row {
         Checkbox(
             checked = aceito,

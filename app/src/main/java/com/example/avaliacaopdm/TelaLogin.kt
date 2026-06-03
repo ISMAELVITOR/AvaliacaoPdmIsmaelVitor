@@ -75,7 +75,7 @@ fun TelaLogin(navController: NavController){
             onTextoChange = {senha = it}
         )
 
-            CheckBoxAceitar(
+            CheckBox(
                 "salvar login",
                 aceito = aceito,
                 onAceitoChange = { aceito = it }
