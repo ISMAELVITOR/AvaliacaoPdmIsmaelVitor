@@ -1,6 +1,6 @@
 package com.example.avaliacaopdm
 
-import android.R
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
@@ -14,16 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import androidx.compose.ui.text.font.FontFamily
+import com.example.avaliacaopdm.ui.theme.PixelifySans
+
 
 @Composable
 fun Titulo(texto: String){
     Text(
         text = texto,
-        fontSize = 30.sp,
-        textAlign = TextAlign.Center,
+        fontSize = 20.sp,
+        textAlign = TextAlign.Center
     )
 }
 

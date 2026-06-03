@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
                     TelaLogin(navController)
                     }
 
-                    composable("segundaTela") {
-                        SegundaTela(navController)
+                    composable("telaPresente") {
+                        TelaPresente(navController)
                     }
                 }
             }

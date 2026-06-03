@@ -90,7 +90,7 @@ fun TelaLogin(navController: NavController){
 
             if(nome == "ismael" && senha == "123" && aceito) {
                 println("Login correto")
-                navController.navigate("segundaTela")
+                navController.navigate("formulario")
             }
             else {
                 println("Login incorreto")

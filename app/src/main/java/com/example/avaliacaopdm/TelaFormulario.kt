@@ -13,6 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Row
 
 @Composable
 fun TelaFormulario(navController: NavController){
@@ -42,9 +44,9 @@ fun TelaFormulario(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)){
 
-        BotaoImagem(idImagem = R.drawable.bob,
-            "perfil",
-            navController = navController)
+        Imagem(idImagem = R.drawable.interrogacao, Modifier.size(150.dp))
+
+        Titulo("Faça seu cadastro para receber um presente")
 
         EntradaTexto("nome",
             "Digite seu nome",
@@ -52,17 +54,35 @@ fun TelaFormulario(navController: NavController){
 
         EntradaTexto("cidade",
             "Digite sua Cidade",
-            texto = nome, onTextoChange = {cidade = it})
+            texto = cidade, onTextoChange = {cidade = it})
 
         EntradaTexto("endereço",
             "Digite seu endereço",
             texto = endereco, onTextoChange = {endereco = it})
 
         CheckBox(
-            "Aceito os termos de uso",
+            "Aceito os termos para receber o presente",
             aceito = aceito,
             onAceitoChange = { aceito = it }
         )
+
+        Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+
+            BotaoGenerico("Limpar",
+                onClick = {
+                    nome = "" ;
+                    cidade = "" ;
+                    endereco = "";
+                    aceito = false
+                })
+
+            BotaoGenerico("Salvar",
+                onClick = {
+                    if(nome != "" && cidade != "" && endereco != ""){
+                        navController.navigate("telaPresente")
+                }
+                })
+        }
     }
 
 }
